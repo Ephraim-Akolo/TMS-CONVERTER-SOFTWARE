@@ -1,0 +1,34 @@
+MainWidget:
+    
+
+<MainWidget>:
+    orientation:'vertical'
+    canvas:
+        Rectangle:
+            size: self.size  
+            source: "data/background2.png"
+    TextInput:
+        id: textinput
+        text: "       Type video's absolute path here"
+        pos: 896/2, 540/2
+        size: 812/2, 70/2
+        focus: False
+        on_focus: root.clear_text(self, convert)
+        multiline: False
+        background_normal: "data/textinput_normal.png"
+        background_active: "data/textinput_active.png"
+    BoxLayout:
+        size: 550/2, 74/2
+        pos: 578, 230
+        spacing: '3dp'
+        Button:
+            id: brower
+            on_release: root.brower_pressed(convert, textinput)
+            on_press: root.brower_press()
+            background_normal: "data/browse_normal.png"
+            background_down: "data/browse_down.png"
+        Button:
+            id: convert
+            background_normal: "data/button_normal.png"
+            background_down: "data/button_down.png"
+            on_release: root.convert_pressed(self, textinput)
