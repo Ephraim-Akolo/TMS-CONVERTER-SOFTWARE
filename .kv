@@ -1,7 +1,12 @@
-MainWidget:
+<Loading>:
+    auto_dismiss: False
+    overlay_color: (0,0, 0,.1)
+    background_color: (1, 1, 1, 0)
+    background: "white"
+    size_hint: .8, .5
     
 
-<MainWidget>:
+MainWidget:
     orientation:'vertical'
     canvas:
         Rectangle:
@@ -10,16 +15,16 @@ MainWidget:
     TextInput:
         id: textinput
         text: "       Type video's absolute path here"
-        pos: 896/2, 540/2
-        size: 812/2, 70/2
+        pos: dp(896/2), dp(540/2)
+        size: dp(812/2), dp(70/2)
         focus: False
         on_focus: root.clear_text(self, convert)
         multiline: False
         background_normal: "data/textinput_normal.png"
         background_active: "data/textinput_active.png"
     BoxLayout:
-        size: 550/2, 74/2
-        pos: 578, 230
+        size: dp(550/2), dp(74/2)
+        pos: dp(578), dp(230)
         spacing: '3dp'
         Button:
             id: brower
@@ -32,3 +37,19 @@ MainWidget:
             background_normal: "data/button_normal.png"
             background_down: "data/button_down.png"
             on_release: root.convert_pressed(self, textinput)
+        
+    
+    BoxLayout:
+        orientation:'vertical'
+        size_hint: None, None
+        size: '40dp', '60dp'
+        x: root.width-dp(160)
+        y: dp(20)
+        Label:
+            text:'size'
+            color: "black"
+        TextInput:
+            id: dpi_input
+            input_filter: "int"
+            text:'750'
+
